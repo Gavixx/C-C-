@@ -1,0 +1,177 @@
+Задача 1
+#pragma warning (disable:4786)  //for set (Microsoft compilers only)
+#include <iostream>
+//#include <vector> заміна бібліотеки вектора на бібліотеку черги   
+#include <deque>  
+#include <set>
+#include <list> // додамо бібліотеку списку
+#include <algorithm>
+using namespace std;
+int const n = 10;
+void main(void)
+{
+	//int arr[n];
+	list<int> arr; // заміна масиву на список
+	set<int, less<int> > s;
+	//vector<int> v(2 * n);
+	//vector<int>::iterator iv;
+	deque<int> v;  // заміна вектора на чергу 
+	deque<int>::iterator iv;
+	for (int i = 0, d = -2; i < n; i++)	arr.push_back(d += 2);
+	for (int i = 0, d = -1; i < n; i++)	s.insert(d += 2);
+
+	merge(arr.begin(), arr.end(), s.begin(), s.end(), back_inserter(v));
+	sort(v.begin(), v.end());  // сортування
+
+	for (iv = v.begin(); iv != v.end(); iv++) cout << *iv << " ";
+	cout << endl;
+}
+Задача 2
+#pragma warning (disable:4786)  //for set (Microsoft compilers only)
+#include <iostream>
+#include <string>
+#include <iterator>
+#include <fstream>
+using namespace std;
+void main(void)
+{	
+	string name;
+	cout << "Input name: ";
+	cin >> name; 
+	name.append(".txt"); // додання до назви файла розширення .txt 
+	ifstream infile(name);
+	istream_iterator<int>   file1_iter(infile);
+	istream_iterator<int>   end_of_file1;
+	ofstream outfile(name);
+	ostream_iterator<int>   file2_iter(outfile, "  ");
+	/*while (file1_iter != end_of_file1)
+	{
+		cout << *file1_iter << " ";
+		*file2_iter++ = *file1_iter++;
+	}*/
+	copy(file1_iter, end_of_file1, file2_iter); // копіювання
+	cout << endl;
+}
+ Задача 3
+#include <iostream>
+#include <string>
+#include <map>
+#include <iterator>
+#include <fstream>
+#include <algorithm>
+using namespace std;
+int main() {
+	map< string, string > book;
+
+	ifstream infile("book.txt");
+	if (infile.is_open()) {
+		cout << "file open to read" << endl;
+		while (!infile.eof()) {
+			string key, value;
+			infile >> key >> value;
+			if (key != "") {
+				book[key] = value;
+				cout << "Read data:\n name: " << key << " value:" << value << "\n";
+			}
+		};
+		cout << "read finish succesfuly\nstart program\n\n";
+	}
+	else {
+		cout << "file not found" << endl;
+	}
+	ofstream outfile("book.txt");
+	string cmd, name, phone;
+
+	cout << "Input command(add,find, del, view, quit): ";
+	while (cin >> cmd)
+	{
+		if (cmd == "add")
+		{
+			cout << "Input name: ";
+			cin >> name;
+			cout << "Input phone number: +";
+			cin >> phone;
+			book[name] = phone;
+			cout << "Added" << endl;
+		}
+		else if (cmd == "find")
+		{
+			cout << "Input name: ";
+			cin >> name;
+			try { string v = book.at(name); cout << name << " 's phone is " << v << endl; }
+			catch (const out_of_range& e) { cout << name << " not found" << endl; }
+		}
+		else if (cmd == "del")
+		{
+			cout << "Input name: ";
+			cin >> name; book.erase(name);  cout << "Deleted" << endl;
+		}
+		else if (cmd == "view")
+		{
+			map< string, string >::iterator kv;
+			for (kv = book.begin(); kv != book.end(); kv++)
+				cout << (*kv).first << "\t " << (*kv).second << endl;
+		}
+		else if (cmd == "quit") {
+			int size = book.size();
+
+			string* arr = new string[size];
+			int i = 0;
+			for (auto kv = book.begin(); kv != book.end(); kv++) {
+				arr[i++] = kv->first + " " + kv->second;
+			}
+			copy(arr, arr + size, ostream_iterator<string>(outfile, "\n"));
+			delete[] arr;
+			return 0;
+		}
+		else
+			cerr << "Bad command ' " << cmd << " ' " << endl;
+	}
+
+}Задача 4
+#pragma warning (disable:4786)  //for set (Microsoft compilers only)
+#include <iostream>
+#include <CTYPE.H>
+#include <map>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+char str[100];
+
+void main(void)
+{
+	char* p;
+	p = str;
+	string name;
+	cout << "Input name: ";
+	cin >> name;
+
+	name.append(".cpp");
+	ofstream outfile(name);
+	map<string, int, less<string> > mapDict;
+	map<string, int, less<string> >::iterator iter;
+
+	ifstream infile(name, ios::binary);
+
+	while (!infile.eof())
+	{
+		infile.read(p, 1);
+		if (ispunct(*p)) *p = ' ';
+		if ((*p == ' ') || (*p == '\t') || (*p == '\n'))
+		{
+			*p = '\0';
+			// cout << str << endl;
+			if (mapDict[str])  mapDict[str]++;
+			else mapDict[str] = 1;
+			p = str;
+		}
+		else p++;
+	}
+	cout << endl;
+	infile.close();
+
+	for (iter = mapDict.begin(); iter != mapDict.end(); iter++)
+		cout << (*iter).first << " -> " << (*iter).second << "\n";
+}

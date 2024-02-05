@@ -1,0 +1,102 @@
+Задача 1 
+
+#include <iostream>
+#include <cmath>
+
+
+class complex
+{
+	double real, image;
+public:
+
+	complex(double r) {
+		real = r;
+		image = 0;
+	};										// конструктор c одним параметром
+	complex(double r, double i) {
+		real = r;
+		image = i;
+	};									// конструктор
+	void assign(double r, double i) {
+		real = r;
+		image = i;
+	};
+
+	void print() {
+		std::cout << real << " + " << image << "i";
+	};
+
+	operator double() {
+		std::cout << "double ";
+		return sqrt(real * real + image * image);		// преобразование complex в double
+	};
+
+	complex operator+(complex& other) {																	
+		return complex(real + other.real, image + other.image);				// Додавання
+	}
+
+	complex operator-(complex& other) {
+		return complex(real - other.real, image - other.image);				// Віднімання
+	}
+
+	complex operator*(complex& other) {
+		return complex(real * other.real - image * other.image, real * other.image+ image* other.real);		// Множення
+	}
+
+	complex operator/(complex& other) {
+		return complex((real * other.real + image * other.image) / (other.real * other.real + other.image * other.image), 
+			(image * other.real - real * other.image) / (other.real * other.real + other.image * other.image));							// Ділення
+	}
+	bool operator==(const complex& other) const {
+		return (real == other.real) && (image == other.image);
+	}
+};
+//
+//int greater(int i, int j) {
+//	std::cout << "int ";
+//	return (i > j) ? i : j;
+//};
+//
+//double greater(double i, double j) {
+//	std::cout << "double ";
+//	return (i > j) ? i : j; 
+//};
+//
+//complex greater(complex i, complex j) {
+//	std::cout << "Complex :";
+//	return (i > j) ? i : j;							// для i > j потребуется преобразование
+//}; 
+
+void main()
+{
+	int i = 5, j = 10;
+	float x = 7;
+	double y = 14;
+	complex w(0), z(0);
+	w.assign(x, y); 		// требуется преобразования float x в double 
+	z.assign(i, j); 		// оба параметра преобразуются в double
+	std::cout << "w + z = " << w + z << "\n";
+	std::cout << "w - z = " << w - z << "\n";
+	std::cout << "w * z = " << w * z << "\n";
+	std::cout << "w / z = " << w / z << "\n";
+	if (w==z) std::cout << "w == z - true";
+	else std::cout << "w == z - false";
+
+//// Выбирается первое определение greater по правилу соответствия 
+//
+//	std::cout << greater(i, j) << std::endl;
+//
+//	// Выбирает второе определение greater, так как использовано стандартное расширяющее
+//	// преобразование из float в double 
+//
+//	std::cout << greater(x, y) << std::endl;
+//
+//	// Второе определение greater выбирается из-за точного соответствия правилу
+//
+//	std::cout << greater(y, double(z)) << std::endl;  // явное преобразование z к типу double
+//
+//// Точно соответствует третьему определению 
+//
+//	std::cout << greater(w, z) << std::endl; 	// неявное преобразование w и z к типу double при
+//				// выполнении операций сравнения ">" и  “<<"
+}

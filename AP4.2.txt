@@ -1,0 +1,23 @@
+#include <stdio.h>
+#define size 10
+int arr[size] = { 0 };
+int imin = 0;
+int imax = 0;
+#define DRUK_MIN printf("min=%d\n", arr[imin])
+#define DRUK_MAX printf("max=%d\n", arr[imax])
+
+int main()
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("Input arr[%d]: ", i);
+        scanf("%d", &arr[i]);
+        if (arr[i] < arr[imin])
+            imin = i;
+        if (arr[i] > arr[imax])
+            imax = i;
+    }
+    DRUK_MIN;
+    DRUK_MAX;
+    return 0;
+}

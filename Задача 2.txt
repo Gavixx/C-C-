@@ -1,0 +1,70 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+class matrix
+{
+public:						// Функція класу vect мають доступ до цих членів
+	int row, column;		// Розмірність матриці 
+	int(*base)[3];			// Покажчик на масив
+	matrix(int(*ptr)[3], int r, int c);
+	friend class vect;
+};
+
+matrix::matrix(int ptr[][3], int r, int c)
+{
+	base = ptr; 
+	row = r;
+	column = c;
+}
+
+class vect {
+	int size;		// Розмір вектора
+	int* p;			// Покажчик на вектор
+public:
+	vect(int* ptr, int n);
+	vect() {};						// Конструктор по-замовчуванню. 
+	void print(void)
+	{
+		cout << p[0] << "  " << p[1] << "  " << p[2] << "  " << endl;
+	};
+	friend vect operator*(const matrix& m, const vect& v);
+};
+
+vect::vect(int* ptr, int n)
+{
+	p = ptr;
+	size = n;
+}
+
+vect operator*(const matrix& m, const vect& v)
+{
+	if (v.size != m.row) {
+		exit(1);
+	}
+	else
+	{
+		int* v1 = new int[m.column];
+		int i = 0, j = 0;
+		vect ansv(v1, m.column);
+		for (i = 0; i < m.column; i++)
+		{
+			ansv.p[i] = 0;
+			for (j = 0; j < m.row; j++)
+			{
+				ansv.p[i] = ansv.p[i] + v.p[j] * m.base[j][i];
+			}
+		}
+		return ansv;
+	}
+}
+
+void main(void)
+{
+	int mas1[] = { 1,1,1 };
+	int mas2[3][3] = { {1,2,3},{1,2,3},{1,2,3} };
+	vect vect1(mas1, 3), rez;			// Об’єкти типу vect 
+	matrix matrix1(mas2, 3, 3);
+	rez = matrix1*vect1;
+	rez.print();
+	rez.print();
+}

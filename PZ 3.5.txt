@@ -1,0 +1,52 @@
+#include <iostream>
+template <typename T>
+class Mas2
+{
+public:
+	Mas2(int row, int coloms) : row(row), coloms(coloms), arr(new T* [row]) {
+		for (int i = 0; i < row; i++)
+		{
+			arr[i] = new T[coloms];
+		}
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < coloms; j++)
+			{
+				arr[i][j] = i + j;
+				std::cout << arr[i][j] << " ";
+			}
+			std::cout << "\n";
+		}
+	};
+	~Mas2() {
+		for (int i = 0; i < row; i++)
+		{
+			delete[] arr[i];
+		}
+		delete[] arr;
+	};
+	double  AVG();
+private:
+	T** arr;
+	int row, coloms;
+};
+
+template<typename T>
+double Mas2<T>::AVG()
+{
+	T suma = 0;
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < coloms; j++)
+		{
+			suma += arr[i][j];
+		}
+	}
+	return suma / (row * coloms);
+}
+
+int main()
+{
+	Mas2 <int> a(3, 3);
+	std::cout << "AVG: " << a.AVG();
+}

@@ -1,0 +1,41 @@
+#include <iostream>
+
+template <typename T>
+T Suma(const T arr[], size_t size);
+
+int main()
+{
+	int arr1[] = { 1,2,3 };
+	char arr2[] = { 11, 15, 20 };
+	double arr3[] = { 1.5, 2.5, 4.5 };
+	std::cout << "Int array : "<<"\n";
+	for (int  i = 0; i < 3; i++)
+	{
+		std::cout<< i << " Element of array - "<<arr1[i] << "\n";
+	}
+	std::cout << "Suma int array : " << Suma(arr1, 3)<<"\n";
+	std::cout << "Char array : " << "\n";
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << i << " Element of array - " << arr2[i] << "\n";
+	}
+	std::cout << "Suma char array : " << Suma(arr2, 3)<<"\n";
+	std::cout << "Double array : " << "\n";
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << i << " Element of array - " << arr3[i] << "\n";
+	}
+	std::cout << "Suma double  array : " << Suma(arr3, 3)<<"\n";
+
+	return 0;
+}
+
+template <typename T>
+T Suma(const T arr[], size_t size) {
+	T result = 0;
+	for (int i = 0; i < size; i++)
+	{
+		result += arr[i];
+	}
+	return result;
+}

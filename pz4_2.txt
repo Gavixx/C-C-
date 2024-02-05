@@ -1,0 +1,45 @@
+
+#include <iostream>
+class Time
+{
+public:
+	Time() { hour = minute = 0; a = " "; };
+	Time(int hour, int minute, std::string a) : hour(hour), a(a), minute(minute) {};
+	~Time() {};
+	friend std::ostream& operator << (std::ostream & os, const Time & t);
+	friend std::istream& operator >> (std::istream& is,  Time& t);
+
+private:
+	int hour;
+	int minute;
+	std::string a;
+};
+
+
+std::ostream& operator<<(std::ostream& os, const Time& t)
+{
+	if (t.hour < 10) os << "0";
+	os << t.hour << " ";
+	if (t.minute < 10) os << "0";
+	os << t.minute;
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, Time& t)
+{
+	char ch;
+	is >> t.hour >> ch >> t.minute >> t.a;
+	if (t.hour == 12) t.hour -= 12;
+	if (t.a == "PM") t.hour += 12;
+	return is;
+}
+
+int main()
+{
+	Time t;
+	std::cout << "Input time in 12-hours format(2:30PM): ";
+	std::cin >> t;
+	std::cout << "Result: " << t << "\n";
+	return 0;
+}
+

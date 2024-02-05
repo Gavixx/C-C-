@@ -1,0 +1,134 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class telefon
+{
+private:
+	int num;									//	Номер
+	bool is_free;								//	Вільний/Зайнятий
+public:
+	telefon();									//	Констурктор по замовчуваню
+	telefon(int, bool);							//	Конструктор з параметрами
+	int getNum();								//	Отримання Номера
+	bool up(class ats*);						//	Підняти трубку
+	bool dial(class ats*, telefon*, int);		//	Набрати номер
+	bool ansv(int);								//	Відповісти
+};
+
+
+class ats
+{
+private:
+	int *list_of_num;						//	Список номерів
+	bool is_ready;							//	Готовий/Не готовий
+	int n;									//	к-ть телефонів
+	telefon *list_of_addr;					//	список адрес
+public:
+	ats();									//	Конструктор по замовчуваню
+	ats(int*, int, bool, telefon*);			//	Конструктор з параметрами
+	~ats();									//	Деструктор
+	bool ats_state(void)					//	Опитування стану
+	{
+		if (is_ready) {
+		cout << "Long beep " << endl;
+		return true;
+		}
+		else return false;
+	};
+	bool ats_link(int);						//	Встановити з’єднання
+	int getNumAddr(int);					//	Отримати адрес номера
+};
+
+telefon::telefon()
+{
+	this->num = 0;
+	this->is_free = false;
+}
+
+telefon::telefon(int n, bool b)
+{
+	num = n;
+	is_free = b;
+	cout << "Constructed N" << n << endl;
+}
+
+int telefon::getNum()
+{
+	return num;
+}
+
+bool telefon::up(ats* station)
+{
+	return (station->ats_state());
+}
+
+bool telefon::dial(ats* station, telefon* tlf, int num)
+{
+	return (station->ats_link(num));
+}
+
+bool telefon::ansv(int n)
+{
+	if (n == num && is_free)
+	{
+		cout << endl << "Telefon N" << num << " is ready " << endl;
+		return true;
+	}
+	else return false;
+}
+
+ats::ats()
+{
+	this->n = 0;
+	this->is_ready = false;
+	this->list_of_num = new int[n];
+	this->list_of_addr = new telefon[n];
+	cout << "Constructed ats" << endl;
+}
+
+ats::ats(int* num_list, int n, bool state, telefon *addr_list)
+{
+	this->n = n;
+	this->is_ready = state;
+	this->list_of_num = new int[n];
+	this->list_of_addr = new telefon[n];
+	for (int i = 0; i < this->n; i++) {
+		this->list_of_num[i] = num_list[i];
+		this->list_of_addr[i] = addr_list[i];
+	}
+	this->is_ready = state;
+	cout << "Constructed ats" << endl;
+}
+
+ats::~ats()
+{
+	delete[] list_of_addr;
+	delete[] list_of_num;
+	cout << "Destructed ats" << endl;
+}
+
+bool ats::ats_link(int num)
+{
+	return this->list_of_addr[this->getNumAddr(num)].ansv(num);
+}
+int ats::getNumAddr(int num)
+{
+	int tlf = 0;
+	for (; tlf < n; ++tlf) {
+		if (this->list_of_addr[tlf].getNum() == num)
+			break;
+	}
+	return tlf;
+}
+void main(void)
+{
+	int list[] = { 111, 222 };
+	string addr_list[] = { "address1", "address2" };
+	telefon tlf[] = { {111, true}, {222, true} };
+	ats ats(list, 2, true, tlf);
+
+	tlf[1].up(&ats);
+
+	tlf[1].dial(&ats, &tlf[0], 111);
+	cout << "addr for tlt 222: " << ats.getNumAddr(222) << endl;
+}

@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+#define DAY_IN_YEAR 365
+#define DAY_IN_MONTH 30
+
+struct Date
+{
+    short day;
+    short month;
+    short year;
+} d1, d2;
+
+int main()
+{
+    printf("Введіть день дати 1: ");
+    scanf("%d", &d1.day);
+    printf("Введіть місяць дати 1: ");
+    scanf("%d", &d1.month);
+    printf("Введіть рік дати 1: ");
+    scanf("%d", &d1.year);
+    printf("-----------------\n");
+
+    printf("Введіть день дати 2: ");
+    scanf("%d", &d2.day);
+    printf("Введіть місяць дати 2: ");
+    scanf("%d", &d2.month);
+    printf("Введіть рік дати 2: ");
+    scanf("%d", &d2.year);
+    printf("-----------------\n");
+
+    int diff = 0;
+
+    if (d1.year < d2.year)
+    {
+        diff += (d2.year - d1.year) * DAY_IN_YEAR;
+    }
+    else
+    {
+        diff += (d1.year - d2.year) * DAY_IN_YEAR;
+    }
+
+    if (d1.month < d2.month)
+    {
+        diff += (d2.month - d1.month) * DAY_IN_MONTH;
+    }
+    else
+    {
+        diff += (d1.month - d2.month) * DAY_IN_MONTH;
+    }
+
+    if (d1.day < d2.day)
+    {
+        diff += d2.day - d1.day;
+    }
+    else
+    {
+        diff += d1.day - d2.day;
+    }
+    printf("різниця в днях: %d", diff);
+
+    return 0;
+}

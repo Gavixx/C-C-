@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+#define PI 3.1415926f
+
+struct node
+{
+    double x;
+    double y;
+};
+
+double sideLength(struct node s1, struct node s2);
+
+int main()
+{
+    double P = 0.0;
+    double AB = 0.0;
+    double AD = 0.0;
+    double fi = PI/2.0f;
+    struct node
+        A = {5.0, 1.0},
+        B = {0.8654, 3.8116},
+        C = {1.9901, 5.4655},
+        D = {6.1247, 1.8269};
+
+    AB = sideLength(A, B);
+    AD = sideLength(A, D);
+
+    printf("Довжина сторони AB = %f\n", AB);
+    printf("Довжина сторони AD = %f\n", AD);
+
+    P = 2 * ( AD + AB );
+
+    printf("Периметр ABCD = %f\n", P);
+
+    return 0;
+}
+
+double sideLength(struct node s1, struct node s2)
+{
+    double length = 0.0;
+    length = sqrt( pow((s2.x - s1.x), 2) + pow((s2.y - s1.y), 2));
+    return length;
+}

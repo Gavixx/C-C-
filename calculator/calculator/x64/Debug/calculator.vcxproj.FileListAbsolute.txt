@@ -1,0 +1,11 @@
+C:\Users\Рома\source\repos\calculator\calculator\x64\Debug\calculator.vcxproj.AssemblyReference.cache
+C:\Users\Рома\source\repos\calculator\calculator\x64\Debug\calculator.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Рома\source\repos\calculator\calculator\x64\Debug\calculator.MyForm.resources
+C:\Users\Рома\source\repos\calculator\calculator\x64\Debug\calculator.vcxproj.GenerateResource.cache
+C:\Users\Рома\Desktop\calculator\calculator\x64\Debug\calculator.vcxproj.AssemblyReference.cache
+C:\Users\Рома\Desktop\calculator\calculator\x64\Debug\calculator.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Рома\Desktop\calculator\calculator\x64\Debug\calculator.MyForm.resources
+C:\Users\Рома\Desktop\calculator\calculator\x64\Debug\calculator.vcxproj.GenerateResource.cache
+D:\НАДО\Інститут\ООП\calculator\calculator\x64\Debug\calculator.vcxproj.AssemblyReference.cache
+D:\НАДО\Інститут\ООП\calculator\calculator\x64\Debug\calculator.MyForm.resources
+D:\НАДО\Інститут\ООП\calculator\calculator\x64\Debug\calculator.vcxproj.GenerateResource.cache

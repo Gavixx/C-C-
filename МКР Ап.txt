@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <Windows.h>
+
+#define MAX_RAND_NUMBER 100
+#define MIN_RAND_NUMBER 0
+
+void swap(double *xp, double *yp);
+void init(double *arr, const int n);
+void print(const double *arr, int n);
+void ChoisSort(double *arr, const int n);
+
+int main()
+{
+  srand(time(NULL));
+  SetConsoleCP(1251);
+  SetConsoleOutputCP(1251);
+
+  int n = 0;
+  double *arr = NULL;
+  printf("Введіть розмір масиву: ");
+  scanf("%d", &n);
+  arr = (double*)calloc(n, sizeof(double));
+  init(arr, n);
+  
+  printf("\nМасив до змін:\n");
+  print(arr, n);
+  ChoisSort(arr, n);
+  
+  printf("\nМасив після змін:\n");
+  print(arr, n);
+  
+  free(arr);
+  return 0;
+}
+
+void swap(double *xp, double *yp)
+{
+  double temp = *xp;
+  *xp = *yp;
+  *yp = temp;
+}
+
+void init(double *arr, const int n)
+{
+  for(int i = 0; i < n; ++i)
+  {
+    arr[i] = rand() % MAX_RAND_NUMBER + MIN_RAND_NUMBER;
+  }
+}
+
+void print(const double *arr, int n)
+{
+  for(int i = 0; i < n; ++i)
+  {
+    printf("arr[%d] = %f\n", i, arr[i]);
+  }
+}
+
+void ChoisSort(double *arr, const int n)
+{
+  int i, j, imin;
+  for(i = 0; i < n-1; ++i)
+  {
+    imin = i;
+    for(j = i+1; j < n; ++j)
+    {
+      if(arr[j] < arr[imin])
+      {
+        imin = j;
+      }
+    }
+    if(imin != i)
+    {
+      swap(&arr[imin], &arr[i]);
+    }
+  }
+}

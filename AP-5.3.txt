@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <Windows.h>
+
+#define DAY_IN_YEAR 365
+#define DAY_IN_MONTH 30
+
+struct Date {
+  int day;
+  int month;
+  int year;
+} d1, d2;
+
+void init_date(struct Date *d);
+unsigned int diff(const struct Date *d1, const struct Date *d2);
+
+int main()
+{
+  SetConsoleCP(1251);
+  SetConsoleOutputCP(1251);
+  init_date(&d1);
+  init_date(&d2);
+
+  printf("різниця в днях: %d\n", diff(&d1, &d2));
+  return 0;
+}
+
+void init_date(struct Date *d)
+{
+  printf("Введіть день дати: ");
+  scanf("%d", &d->day);
+  printf("Введіть місяць дати: ");
+  scanf("%d", &d->month);
+  printf("Введіть рік дати: ");
+  scanf("%d", &d->year);
+  printf("-----------------\n");
+}
+
+unsigned int diff(const struct Date *d1, const struct Date *d2)
+{
+  int diff = 0;
+
+      if (d1->year < d2->year)
+      {
+          diff += (d2->year - d1->year) * DAY_IN_YEAR;
+      }
+      else
+      {
+          diff += (d1->year - d2->year) * DAY_IN_YEAR;
+      }
+
+      if (d1->month < d2->month)
+      {
+          diff += (d2->month - d1->month) * DAY_IN_MONTH;
+      }
+      else
+      {
+          diff += (d1->month - d2->month) * DAY_IN_MONTH;
+      }
+
+      if (d1->day < d2->day)
+      {
+          diff += d2->day - d1->day;
+      }
+      else
+      {
+          diff += d1->day - d2->day;
+      }
+
+  return diff;
+}

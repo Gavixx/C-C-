@@ -1,0 +1,102 @@
+Main.cpp
+#include <iostream>
+#include "Sales.h"
+
+using namespace SALES;
+
+
+int main() {
+    double array[] = { 3.0, 5.1, 2.4, 0.1 };
+    Sales o1(array, 4);
+    Sales o2;
+
+    o1.showSales();
+    o2.setSales();
+    o2.showSales();
+
+    return 0;
+}
+
+Sales.h
+#pragma once
+
+namespace SALES {
+    const int QUARTERS = 4;
+    class Sales {
+    public:
+        Sales();
+        Sales(const double ar[], int n);
+        void setSales(const double ar[], int n);
+        void setSales();
+        void showSales() const;
+    private:
+        double sales[QUARTERS];
+        double average;
+        double max;
+        double min;
+    };
+}
+
+Sales.cpp
+#include "Sales.h"
+#include <iostream>
+
+namespace SALES {
+    Sales::Sales() {
+        for (int i = 0; i < QUARTERS; ++i) {
+            sales[i] = 0;
+        }
+        average = 0;
+        max = 0;
+        min = 0;
+    }
+
+    Sales::Sales(const double ar[], int n) {
+        setSales(ar, n);
+    }
+
+    void Sales::setSales(const double ar[], int n) {
+        double total = 0;
+        max = ar[0];
+        min = ar[0];
+
+        for (int i = 0; i < QUARTERS; ++i) {
+            if (i < n) {
+                sales[i] = ar[i];
+            }
+            else {
+                sales[i] = 0;
+            }
+            total += sales[i];
+            if (max < sales[i]) {
+                max = sales[i];
+            }
+            if (min > sales[i]) {
+                min = sales[i];
+            }
+        }
+
+        average = total / QUARTERS;
+    }
+
+    void Sales::setSales() {
+        double ar[QUARTERS];
+
+        std::cout << "Enter sales for 4 quarters:" << '\n';
+        for (int i = 0; i < QUARTERS; ++i) {
+            std::cin >> ar[i];
+        }
+
+        setSales(ar, QUARTERS);
+    }
+
+    void Sales::showSales() const {
+        std::cout << "Sales data:" << '\n';
+        for (int i = 0; i < QUARTERS; ++i) {
+            std::cout << "Quarter " << i + 1 << ": " << sales[i] << '\n';
+        }
+        std::cout << "Max: " << max << '\n';
+        std::cout << "Min: " << min << '\n';
+        std::cout << "Avg: " << average << '\n';
+    }
+}
