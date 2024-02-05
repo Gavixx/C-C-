@@ -1,0 +1,22 @@
+﻿  RGR.cpp
+C:\Users\Roman\source\repos\RGR\RGR.cpp(40,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(42,26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(190,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(200,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(207,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(211,13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(222,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(242,10): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\RGR\RGR.cpp(243,27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(261,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(271,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(282,19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(299,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(445,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(465,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(467,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(524,25): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(528,25): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\RGR\RGR.cpp(542,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\RGR\RGR.cpp(547,12): warning C4305: 'initializing': truncation from 'double' to 'float'
+  RGR.vcxproj -> C:\Users\Roman\source\repos\RGR\x64\Debug\RGR.exe
