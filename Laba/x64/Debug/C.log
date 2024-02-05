@@ -1,0 +1,4 @@
+﻿  Source.c
+C:\Users\Roman\source\repos\C\Source.c(41,12): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\C\Source.c(67,8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  C.vcxproj -> C:\Users\Roman\source\repos\C\x64\Debug\C.exe

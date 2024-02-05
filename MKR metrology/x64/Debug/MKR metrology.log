@@ -1,0 +1,19 @@
+﻿  MKR metrology.cpp
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,32): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,53): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,60): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,67): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,74): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,81): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,88): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,95): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,102): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(9,109): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(10,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(14,15): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(37,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(88,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(107,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Roman\source\repos\MKR metrology\MKR metrology.cpp(116,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  MKR metrology.vcxproj -> C:\Users\Roman\source\repos\MKR metrology\x64\Debug\MKR metrology.exe

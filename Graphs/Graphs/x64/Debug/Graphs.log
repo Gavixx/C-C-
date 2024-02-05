@@ -1,0 +1,3 @@
+﻿  Graphs.cpp
+C:\Users\rzhva\source\repos\Graphs\Graphs\Graphs.cpp(33,6): warning C4101: 'list': unreferenced local variable
+  Graphs.vcxproj -> C:\Users\rzhva\source\repos\Graphs\x64\Debug\Graphs.exe
